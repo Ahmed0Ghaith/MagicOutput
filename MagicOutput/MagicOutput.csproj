@@ -45,8 +45,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ColorOptions.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DebugFormat.cs" />
+    <Compile Include="ErrorFormat.cs" />
+    <Compile Include="InfoFormat.cs" />
+    <Compile Include="OutputClassificationTypes.cs" />
+    <Compile Include="OutputClassifier.cs" />
+    <Compile Include="OutputClassifierProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MagicOutputPackage.cs" />
+    <Compile Include="SuccessFormat.cs" />
+    <Compile Include="TraceFormat.cs" />
+    <Compile Include="WarningFormat.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
@@ -63,6 +75,9 @@
       <Version>17.14.275</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.0.32112.339" ExcludeAssets="runtime" NoWarn="NU1604" />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0">
+      <Version>17.14.40264</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Text.Logic">
       <Version>17.14.249</Version>
     </PackageReference>
