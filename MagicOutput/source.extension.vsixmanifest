@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="MagicOutput.ahmed0ghaith" Version="1.1.0" Language="en-US" Publisher="Ahmed0Ghaith" />
+        <Identity Id="Magic-Output.ahmed0ghaith" Version="1.1.0" Language="en-US" Publisher="Ahmed0Ghaith" />
         <DisplayName>Magic Output</DisplayName>
         <Description xml:space="preserve">Colorizes Visual Studio Output window with smart pattern recognition. Makes errors red, warnings orange, success messages green, and more for better readability.</Description>
         <MoreInfo>https://github.com/ahmed0ghaith/MagicOutput</MoreInfo>
-        <Icon>MagicOdutput.png</Icon>
+        <Icon>MagicOutput.png</Icon>
         <PreviewImage>Screenshot 2025-10-28 131826.png</PreviewImage>
         <Tags>output, colorizer, productivity, readability, enhancement</Tags>
     </Metadata>

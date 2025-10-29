@@ -53,23 +53,35 @@ Magic Output intelligently recognizes patterns in your output:
 | Debug | Gray | debug, verbose |
 | Trace | Purple | trace, tracing |
 
-## 🎨 Customization
+## ⚙️ Settings & Customization
 
-You can customize the colors to match your preferences:
+Access settings via **Tools → Options → Magic Output → Colors**
 
-1. Go to **Tools → Options**
-2. Navigate to **Environment → Fonts and Colors**
-3. In "Show settings for" dropdown, select **Text Editor**
-4. Scroll through "Display items" to find:
-   - Output Error
-   - Output Warning
-   - Output Success
-   - Output Info
-   - Output Debug
-   - Output Trace
-5. Customize the colors as desired
-6. Click **OK** to apply
+### Available Options:
 
+**Colors:**
+- Error Color (default: #FF6464 - Light Red)
+- Warning Color (default: #FFC864 - Orange)  
+- Success Color (default: #64FF64 - Light Green)
+- Info Color (default: #64B4FF - Light Blue)
+- Debug Color (default: #B4B4B4 - Gray)
+- Trace Color (default: #C896FF - Purple)
+
+**Keywords:**
+Customize which words trigger each color. Use comma-separated values:
+- Error Keywords
+- Warning Keywords
+- Success Keywords
+- Info Keywords
+- Debug Keywords
+- Trace Keywords
+
+**General:**
+- Enable/Disable colorization
+- Case-sensitive matching
+
+### Example Customization:
+Add your own keywords like `"FAIL,BOOM,CRASH"` for errors, or change error color to bright red `#FF0000`.
 ## 🔧 Supported Visual Studio Versions
 
 - ✅ Visual Studio 2026 
