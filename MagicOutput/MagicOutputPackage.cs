@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.Text;
+using Microsoft.VisualStudio.Text.Classification;
+using Microsoft.VisualStudio.Utilities;
+using System;
 using System.ComponentModel.Composition;
 using System.Text.RegularExpressions;
 using System.Windows.Media;
-using Microsoft.VisualStudio.Text;
-using Microsoft.VisualStudio.Text.Classification;
-using Microsoft.VisualStudio.Utilities;
 
 namespace MagicOutput
 {
@@ -147,7 +147,7 @@ namespace MagicOutput
 
         // Regex patterns for matching
         private static readonly Regex ErrorPattern = new Regex(
-            @"(error|exception|failed|failure|fatal|critical|\bfail\b)",
+            @"(error|exception|(?<!0\s)failed|failure|fatal|critical|\bfail\b)",
             RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
         private static readonly Regex WarningPattern = new Regex(
