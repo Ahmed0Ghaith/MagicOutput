@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable">
+	<Extern href="stdidcmd.h"/>
+	<Extern href="vsshlids.h"/>
+	<Commands package="guidMagicOutputPkgString">
+		<Groups>
+			<Group guid="guidMagicOutputCmdSet" id="MyMenuGroup" priority="0x0600">
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS" />
+			</Group>
+		</Groups>
+		<Buttons>
+			<Button guid="guidMagicOutputCmdSet" id="cmdidOpenOptions" priority="0x0100" type="Button">
+				<Parent guid="guidMagicOutputCmdSet" id="MyMenuGroup" />
+				<Strings>
+					<CanonicalName>OpenMagicOutputOptions</CanonicalName>
+					<ButtonText>Open Magic Output Options...</ButtonText>
+				</Strings>
+			</Button>
+		</Buttons>
+
+	</Commands>
+	<Symbols>
+		<GuidSymbol name="guidMagicOutputCmdSet" value="{b3c9b7d9-7f3a-4e5d-9c6b-8a7b9c0d1e2f}">
+			<IDSymbol name="MyMenuGroup" value="0x1020" />
+			<IDSymbol name="cmdidOpenOptions" value="0x0100" />
+		</GuidSymbol>
+
+		<!-- Visual Studio shell main menu GUID (Tools menu parent) -->
+		<GuidSymbol name="guidSHLMainMenu" value="{5EFC7975-14BC-11CF-9B2B-00AA00573819}">
+			<IDSymbol name="IDM_VS_MENU_TOOLS" value="0x0026" />
+		</GuidSymbol>
+	</Symbols>
+</CommandTable>
