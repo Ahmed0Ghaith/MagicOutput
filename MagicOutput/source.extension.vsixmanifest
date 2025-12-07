@@ -7,7 +7,7 @@
         <MoreInfo>https://github.com/ahmed0ghaith/MagicOutput</MoreInfo>
         <License>LICENSE.txt</License>
         <Icon>MagicOutput.png</Icon>
-        <PreviewImage>assets\MagicOutputPreview.png</PreviewImage>
+        <PreviewImage>MagicOutputPreview.png</PreviewImage>
         <Tags>output, colorizer, productivity, readability, enhancement</Tags>
     </Metadata>
     <Installation>
