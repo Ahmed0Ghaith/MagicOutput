@@ -193,11 +193,11 @@ namespace MagicOutput
             private readonly OutputClassificationOptions _options;
 
             private static readonly Regex SuccessPattern = new Regex(
-                @"(success|succeeded|completed|passed|done|\bok\b|build succeeded)",
+                @"(\bsuccess\b|\bsucceeded\b|\bcompleted\b|\bpassed\b|\bdone\b|\bok\b|\bbuild succeeded\b)",
                 RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
             private static readonly Regex InfoPattern = new Regex(
-                @"(info|information|note|starting|building)",
+                @"(\binfo\b|\binformation\b|\bnote\b|\bstarting\b|\bbuilding\b)",
                 RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
             private static readonly Regex DebugPattern = new Regex(
@@ -239,7 +239,7 @@ namespace MagicOutput
                 string extraErrors = _options?.ExtraErrorPatterns ?? "";
 
                 string warningRegex = @"(warning|warn|caution|deprecated";
-                string errorRegex = @"(error|exception|failed|failure|fatal|critical";
+                string errorRegex = @"(\berror\b|\bexception\b|\bfailed\b|\bfailure\b|\bfatal\b|\bcritical\b";
 
                 if (!string.IsNullOrWhiteSpace(extraWarnings))
                     warningRegex += "|" + Regex.Escape(extraWarnings).Replace("\\,", "|").Replace(" ", "");
@@ -266,7 +266,7 @@ namespace MagicOutput
                 }
                 catch
                 {
-                    _dynamicErrorPattern = new Regex(@"(error|exception|failed|failure|fatal|critical)", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+                    _dynamicErrorPattern = new Regex(@"(\berror\b|\bexception\b|\bfailed\b|\bfailure\b|\bfatal\b|\bcritical\b)", RegexOptions.IgnoreCase | RegexOptions.Compiled);
                 }
             }
 
@@ -277,18 +277,15 @@ namespace MagicOutput
                 var classifications = new List<ClassificationSpan>();
                 string text = span.GetText();
 
-                // Priority order: Error > Warning > Success > Debug > Trace > Info
-                if (_dynamicErrorPattern != null && _dynamicErrorPattern.IsMatch(text) && _errorType != null)
-                {
-                    classifications.Add(new ClassificationSpan(span, _errorType));
-                }
-                else if (_dynamicWarningPattern != null && _dynamicWarningPattern.IsMatch(text) && _warningType != null)
-                {
-                    classifications.Add(new ClassificationSpan(span, _warningType));
-                }
-                else if (SuccessPattern.IsMatch(text) && _successType != null)
+                // Priority order: Success > Info > Debug > Trace > Error > Warning
+                // Success is checked first to avoid false positives like "0 failed" in successful build summaries
+                if (SuccessPattern.IsMatch(text) && _successType != null)
                 {
                     classifications.Add(new ClassificationSpan(span, _successType));
+                }
+                else if (InfoPattern.IsMatch(text) && _infoType != null)
+                {
+                    classifications.Add(new ClassificationSpan(span, _infoType));
                 }
                 else if (DebugPattern.IsMatch(text) && _debugType != null)
                 {
@@ -298,9 +295,13 @@ namespace MagicOutput
                 {
                     classifications.Add(new ClassificationSpan(span, _traceType));
                 }
-                else if (InfoPattern.IsMatch(text))
+                else if (_dynamicErrorPattern != null && _dynamicErrorPattern.IsMatch(text) && _errorType != null)
                 {
-                    classifications.Add(new ClassificationSpan(span, _infoType));
+                    classifications.Add(new ClassificationSpan(span, _errorType));
+                }
+                else if (_dynamicWarningPattern != null && _dynamicWarningPattern.IsMatch(text) && _warningType != null)
+                {
+                    classifications.Add(new ClassificationSpan(span, _warningType));
                 }
 
                 return classifications;
